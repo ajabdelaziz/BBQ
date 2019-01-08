@@ -1,0 +1,5 @@
+Django==2.1.5
+django-hstore==1.5a0
+psycopg2==2.7.6.1
+pytz==2018.9
+django-webpack-loader

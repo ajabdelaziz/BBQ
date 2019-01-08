@@ -1,3 +1,12 @@
-<div id="main"></div>
-
-<script src="{% static 'js/.prod.min.js' %}"></script>
+{% load render_bundle from webpack_loader %}
+<!DOCTYPE html>
+<html>
+ <head>
+ <meta charset="UTF-8">
+ <title>Example</title>
+ </head>
+ <body>
+ <div id="main"></div>
+ {% render_bundle 'events' %}
+ </body>
+</html>

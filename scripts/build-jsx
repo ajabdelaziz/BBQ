@@ -1,1 +1,20 @@
-browserify --debug -r=react -r=redux -r=react-redux -r=react-dom events/static/events/events.react.js -o events/static/events/events.min.js -v -t
+#!/bin/bash
+
+params_suffix="-v -t [ babelify --sourceMaps inline --presets [ es2015 react ] --plugins [ transform-object-rest-spread ] ]"
+path_js="./events/static/events"
+path_sb="$path_js/react_apps"
+
+params_browserify="--debug -r=react -r=redux -r=react-redux -r=react-dom -r=whatwg-fetch -r=reselect -r=deepcopy -r=deep-equal -r=react-select -o"
+params_action="--debug -x=react -x=redux -x=react-redux -x=react-dom -x=whatwg-fetch -x=reselect -x=deepcopy -x=deep-equal -x=react-select"
+
+
+if [[ "$1" == "watch" ]]; then
+    echo "watching..."
+    action="watchify"
+else
+    action="browserify"
+fi
+
+params_app="$params_suffix ${path_sb}/events.react.js -o ${path_js}/events.min.js"
+
+browserify -g [ envify --NODE_ENV production ] -g uglifyify $params_app
