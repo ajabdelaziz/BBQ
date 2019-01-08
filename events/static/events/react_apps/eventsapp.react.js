@@ -24,12 +24,9 @@ function state_mapper(state) {
 function merge_props(stateProps, dispatchProps, ownProps) {
   let { objects } = stateProps;
   let { dispatch } = dispatchProps;
-  debugger
+
   return {
-    actions: {
-      ...bindActionCreators(actionCreators, dispatch),
-      ...bindAsyncActionCreators(asyncActionCreators, dispatch, objects)
-    },
+    actions: {},
     ...ownProps,
     ...stateProps,
     ...dispatchProps
