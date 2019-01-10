@@ -1,8 +1,6 @@
 "use strict";
 import React from "react";
-import { bindAsyncActionCreators } from "../flux/utils";
 import { bindActionCreators } from "redux";
-import * as asyncActionCreators from "../flux/async_actions";
 import { connect } from "react-redux";
 import * as actionCreators from "../flux/actions";
 
@@ -16,17 +14,21 @@ export class EventsApp extends React.Component {
 }
 
 function state_mapper(state) {
+  //can pass in initial state objects into here
   return {
     ...state,
   };
 }
 
 function merge_props(stateProps, dispatchProps, ownProps) {
-  let { objects } = stateProps;
+  //later add objects for async action creators
+  // let { objects } = stateProps;
   let { dispatch } = dispatchProps;
 
   return {
-    actions: {},
+    actions: {
+      ...bindActionCreators(actionCreators, dispatch),
+    },
     ...ownProps,
     ...stateProps,
     ...dispatchProps

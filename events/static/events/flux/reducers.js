@@ -5,6 +5,11 @@ export function ui(state, action) {
   state = state ? state : {};
 
   switch (action.type) {
+    case "GET__STEP":
+      return {
+        ...state,
+        step: action.step
+      };
     default:
       return state;
   }

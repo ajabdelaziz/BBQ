@@ -1,3 +1,3 @@
-export function setFormData(form_name, data) {
-  return { type: "FORM__SET_DATA", form_name, data };
+export function getStep(step, data) {
+  return { type: "GET__STEP", step: step, data };
 }
