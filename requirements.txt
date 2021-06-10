@@ -1,4 +1,4 @@
-Django==2.1.5
+Django==2.2.24
 django-hstore==1.5a0
 django-webpack-loader==0.6.0
 psycopg2==2.7.6.1
